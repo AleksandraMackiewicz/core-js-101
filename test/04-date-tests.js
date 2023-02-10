@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const assert = require('assert');
 const tasks = require('../src/04-date-tasks');
 it.optional = require('../extensions/it-optional');
@@ -20,7 +21,6 @@ describe('04-date-tasks', () => {
     );
   });
 
-
   it.optional('parseDataFromIso8601 should parse ISO 8601 string into a date value', () => {
     assert.equal(
       tasks.parseDataFromIso8601('2016-01-19T16:07:37+00:00').valueOf(),
@@ -32,7 +32,6 @@ describe('04-date-tasks', () => {
       1453190857000,
     );
   });
-
 
   it.optional('isLeapYear should true if specified year is leap', () => {
     [
@@ -55,7 +54,6 @@ describe('04-date-tasks', () => {
       );
     });
   });
-
 
   it.optional('timeSpanToString should return the string represation of time span between two dates', () => {
     [
@@ -87,7 +85,6 @@ describe('04-date-tasks', () => {
       );
     });
   });
-
 
   it.optional('angleBetweenClockHands should returns the angle bettween clock hands for specified Greenwich datetime', () => {
     [

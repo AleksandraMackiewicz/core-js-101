@@ -1,3 +1,5 @@
+/* eslint-disable linebreak-style */
+
 module.exports = {
   env: {
     commonjs: true,

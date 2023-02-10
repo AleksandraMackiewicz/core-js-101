@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 const assert = require('assert');
 const tasks = require('../src/08-functions-n-closures-tasks');
 it.optional = require('../extensions/it-optional');
@@ -22,7 +23,6 @@ describe('09-functions-n-closures-tasks', () => {
     });
   });
 
-
   it.optional('getPowerFunction should return the math power function using the specified exponent', () => {
     const power2 = tasks.getPowerFunction(2);
     for (let i = 0; i < 10; i += 1) {
@@ -34,7 +34,6 @@ describe('09-functions-n-closures-tasks', () => {
       assert.equal(power05(i), i ** 0.5);
     }
   });
-
 
   it.optional('getPolynom should return the polynom with specified coefficients', () => {
     [
@@ -57,7 +56,6 @@ describe('09-functions-n-closures-tasks', () => {
     });
   });
 
-
   it.optional('memoize method should cache the result of function', () => {
     let numberOfCalls = 0;
     const fn = () => {
@@ -74,7 +72,6 @@ describe('09-functions-n-closures-tasks', () => {
     }
   });
 
-
   it.optional('retry method should try to evaluate the specified function several times', () => {
     const maxAttemps = 3;
     const expected = 'expected';
@@ -89,7 +86,6 @@ describe('09-functions-n-closures-tasks', () => {
     const actual = tasks.retry(fn, maxAttemps)();
     assert.equal(actual, expected);
   });
-
 
   it.optional('logger method should log start and end of call of the standard js function', () => {
     let log = '';
@@ -109,7 +105,6 @@ describe('09-functions-n-closures-tasks', () => {
       'logger function shoud log the start and end of the specified function',
     );
   });
-
 
   it.optional('logger method should log start and end of call of the specified function', () => {
     let isCalling = false;
@@ -143,7 +138,6 @@ describe('09-functions-n-closures-tasks', () => {
     );
   });
 
-
   it.optional('partialUsingArguments should return the function with partial applied arguments', () => {
     const fn = (x1, x2, x3, x4) => x1 + x2 + x3 + x4;
     assert.equal(
@@ -167,7 +161,6 @@ describe('09-functions-n-closures-tasks', () => {
       "partialUsingArguments(fn, 'a','b','c','d')()' should return 'abcd'",
     );
   });
-
 
   it.optional('getIdGeneratorFunction should return the id generator function', () => {
     const f0 = tasks.getIdGeneratorFunction(0);
