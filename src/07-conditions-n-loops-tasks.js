@@ -279,19 +279,27 @@ function reverseInteger(num) {
  *   4916123456789012 => false
  */
 function isCreditCardNumber(ccn) {
-  const digits = ccn.toString().split('').map(Number);
+  const ccnString = ccn.toString();
   let sum = 0;
-  for (let i = 0; i < digits.length; i += 1) {
-    sum += digits[i];
+  let digit = 0;
+  let addend = 0;
+  let timesTwo = false;
+
+  for (let i = ccnString.length - 1; i >= 0; i -= 1) {
+    digit = parseInt(ccnString.charAt(i), 10);
+    if (timesTwo) {
+      addend = digit * 2;
+      if (addend > 9) {
+        addend -= 9;
+      }
+    } else {
+      addend = digit;
+    }
+    sum += addend;
+    timesTwo = !timesTwo;
   }
-  const sumString = sum.toString();
-  if (sumString.length > 1) {
-    const sumDigits = sumString.split('').map(Number);
-    const firstSumDigit = sumDigits.slice(0);
-    const lastSumDigit = sumDigits.slice(-1);
-    return firstSumDigit[0] + lastSumDigit[0];
-  }
-  return sum;
+
+  return sum % 10 === 0;
 }
 
 /**
@@ -345,13 +353,26 @@ function getDigitalRoot(num) {
  *   '{)' = false
  *   '{[(<{[]}>)]}' = true
  */
-function isBracketsBalanced(/* str */) {
-  // const arr = [str];
-  // if (arr.flat() === arr) {
-  //   return true;
-  // }
-  // return false;
-  throw new Error('Not implemented');
+function isBracketsBalanced(str) {
+  const stack = [];
+  const map = {
+    '(': ')',
+    '{': '}',
+    '[': ']',
+    '<': '>',
+  };
+
+  for (let i = 0; i < str.length; i += 1) {
+    const char = str[i];
+    if (map[char]) {
+      stack.push(map[char]);
+    } else if (char === ')' || char === '}' || char === ']' || char === '>') {
+      if (char !== stack.pop()) {
+        return false;
+      }
+    }
+  }
+  return stack.length === 0;
 }
 
 /**
