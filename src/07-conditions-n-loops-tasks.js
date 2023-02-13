@@ -129,8 +129,13 @@ function isTriangle(a, b, c) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(/* rect1, rect2 */) {
-  throw new Error('Not implemented');
+function doRectanglesOverlap(rect1, rect2) {
+  const rect1Right = rect1.left + rect1.width;
+  const rect1Bottom = rect1.top + rect1.height;
+  const rect2Right = rect2.left + rect2.width;
+  const rect2Bottom = rect2.top + rect2.height;
+  return !(rect1.left > rect2Right || rect1Right < rect2.left
+    || rect1.top > rect2Bottom || rect1Bottom < rect2.top);
 }
 
 /**
@@ -208,8 +213,12 @@ function findFirstSingleChar(str) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  const start = Math.min(a, b);
+  const end = Math.max(a, b);
+  const startBracket = isStartIncluded ? '[' : '(';
+  const endBracket = isEndIncluded ? ']' : ')';
+  return `${startBracket + start}, ${end}${endBracket}`;
 }
 
 /**
@@ -269,8 +278,20 @@ function reverseInteger(num) {
  *   5436468789016589 => false
  *   4916123456789012 => false
  */
-function isCreditCardNumber(/* ccn */) {
-  throw new Error('Not implemented');
+function isCreditCardNumber(ccn) {
+  const digits = ccn.toString().split('').map(Number);
+  let sum = 0;
+  for (let i = 0; i < digits.length; i += 1) {
+    sum += digits[i];
+  }
+  const sumString = sum.toString();
+  if (sumString.length > 1) {
+    const sumDigits = sumString.split('').map(Number);
+    const firstSumDigit = sumDigits.slice(0);
+    const lastSumDigit = sumDigits.slice(-1);
+    return firstSumDigit[0] + lastSumDigit[0];
+  }
+  return sum;
 }
 
 /**
